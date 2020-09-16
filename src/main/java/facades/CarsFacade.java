@@ -59,12 +59,10 @@ public class CarsFacade {
         }
     }
 
-    public Car getCarsById(long id) {
+    public Car getCarsById(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query query = em.createNamedQuery("Car.getById");
-            query.setParameter("id", id);
-            Car car = (Car) query.getSingleResult();
+            Car car = em.find(Car.class, id); 
             return car;
         } finally {
             em.close();
@@ -99,13 +97,14 @@ public class CarsFacade {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(new Car(2005, "Volvo", "V70", "Frederik", 44799));
+            em.persist(new Car(1997, "Ford", "E350", "Jacob", 3000));
             em.persist(new Car(2000, "Chevy", "Venture", "Jonas", 5000));
+            em.persist(new Car(2000, "Chevy", "Venture", "Frederik", 4900));
             em.persist(new Car(1991, "Jeep", "Grand Cherokee", "Jacob", 4799));
+            em.persist(new Car(2005, "Volvo", "V70", "Jonas", 44799));
             em.getTransaction().commit();
         } finally {
             em.close();
         }
     }
 }
-

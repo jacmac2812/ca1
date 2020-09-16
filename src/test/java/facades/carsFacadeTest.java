@@ -13,23 +13,27 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+/**
+ *
+ * @author fh
+ */
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
 public class carsFacadeTest {
 
     private static EntityManagerFactory emf;
     private static CarsFacade facade;
-    private Car c = new Car(2005, "Volvo", "V70", "Frederik", 44799);
-    private Car c2 = new Car(2000, "Chevy", "Venture", "Jonas", 5000);
-    private Car c3 = new Car(1991, "Jeep", "Grand Cherokee", "Jacob", 4799);
+    Car c = new Car(2005, "Volvo", "V70", "Frederik", 44799);
+    Car c2 = new Car(2000, "Chevy", "Venture", "Jonas", 5000);
+    Car c3 = new Car(1991, "Jeep", "Grand Cherokee", "Jacob", 4799);
 
     public carsFacadeTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
-       emf = EMF_Creator.createEntityManagerFactoryForTest();
-       facade = CarsFacade.getFacadeExample(emf);
+        emf = EMF_Creator.createEntityManagerFactoryForTest();
+        facade = CarsFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -64,21 +68,21 @@ public class carsFacadeTest {
     public void testGetCarsCount() {
         assertEquals(3, facade.getCarsCount(), "Expects three rows in the database");
     }
-    
+
     @Test
     public void testDeleteCars() {
         facade.deleteAllCars();
         assertEquals(0, facade.getCarsCount(), "Expects 0 rows in the database");
     }
-    
-//    @Test
-//    public void testgetCarsById() {
-//        assertEquals(c.getmake(), facade.getCarsById(1).getmake(), "Expects Volvo");
-//    }
-//    @Test
-//    public void testgetCarsByModel() {
-//        assertEquals(c.getModel(), facade.getCarsByModel("V70").get(0).getModel(), "Expects V70");
-//    }
-    
+
+    @Test
+    public void testgetCarsById() {
+        assertEquals(1, facade.getCarsById(1).getId(), "Expects 1");
+    }
+
+    @Test
+    public void testgetCarsByModel() {
+        assertEquals("V70", facade.getCarsByModel("V70").get(0).getModel(), "Expects Volvo V70");
+    }
 
 }

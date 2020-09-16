@@ -15,10 +15,10 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name = "Car.deleteAllRows", query = "DELETE from Car"),
-@NamedQuery(name = "Car.getAll", query = "SELECT c FROM Car c"),
-@NamedQuery(name = "Car.getByModel", query = "SELECT c FROM Car c WHERE c.model LIKE CONCAT('%',:model,'%')"),
-@NamedQuery(name = "Car.getById", query = "SELECT c FROM Car c WHERE c.id = :id")
+    @NamedQuery(name = "Car.deleteAllRows", query = "DELETE from Car"),
+    @NamedQuery(name = "Car.getAll", query = "SELECT c FROM Car c"),
+    @NamedQuery(name = "Car.getByModel", query = "SELECT c FROM Car c WHERE c.model LIKE CONCAT('%',:model,'%')"),
+    @NamedQuery(name = "Car.getById", query = "SELECT c FROM Car c WHERE c.id = :id")
 })
 
 /**
@@ -26,19 +26,20 @@ import javax.persistence.NamedQuery;
  * @author fh
  */
 public class Car implements Serializable {
-    private Long id;
+
+    private int id;
     private int year;
     private String make;
     private String model;
     private String owner;
     private int price;
-    
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -93,9 +94,8 @@ public class Car implements Serializable {
         this.price = price;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    
 }
