@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Using map and filter to create dynamic table-rows</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            table, td, th {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <p id='carList'></p>
+        <form id='priceFilter'>
+            <input type="number" id="typeNumber" name="typeNumber">
+            <input type="submit" id="number" value="Price less than">
+            <input type="number" id="yearNumber" name="typeNumber">
+            <input type="submit" id="number2" value="Year less than">
+        </form>
+        
+        
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', owner: 'Jacob', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', owner: 'Christian', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', owner: 'Frederik', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', owner: 'Jacob', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', owner: 'Jonas', price: 44799}
+            ];
+
+            function listHTML(array) {
+                array2 = array.map(function (car) {
+                    return '<tr><td>' + car.id + '</td><td>' + car.year + '</td><td>' + car.make + '</td><td>' + car.model + '</td><td>' + car.owner + '</td><td>' + car.price + '</td></tr>';
+                });
+
+                array2.push('</table>');
+                array2.unshift('<table><tr><th>Id</th><th>Year</th><th>Make</th><th>Model</th><th>Owner</th><th>Price</th></tr>');
+                array3 = array2.join('');
+
+                document.getElementById("carList").innerHTML = array3;
+            }
+
+            listHTML(cars);
+            
+            
+            let number = document.getElementById("number")
+            number.addEventListener('click', (event) => {
+                event.preventDefault();
+                let number = document.getElementById("typeNumber").value;
+                
+                let carsFiltered = cars.filter(function(car) { return car.price < number });
+                
+                listHTML(carsFiltered);
+            })
+            
+            let number2 = document.getElementById("number2");
+            number2.addEventListener('click', (event) => {
+                event.preventDefault();
+                let number2 = document.getElementById("yearNumber").value;
+                
+                let carsFiltered = cars.filter(function(car) { return car.year < number2 });
+                
+                listHTML(carsFiltered);
+            })
+        
+
+        </script>
+    </body>
+</html>
