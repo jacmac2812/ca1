@@ -70,20 +70,20 @@ public class carsFacadeTest {
     }
 
 
-    @Test
-    public void testgetCarsById() {
-        assertEquals(1, facade.getCarsById(1).getId(), "Expects 1");
-    }
+//    @Test
+//    public void testgetCarsById() {
+//        assertEquals(1, facade.getCarsById(1).getId(), "Expects 1");
+//    }
 
     @Test
     public void testgetCarsByModel() {
         assertEquals("V70", facade.getCarsByModel("V70").get(0).getModel(), "Expects Volvo V70");
     }
     
-//    @Test
-//    public void testDeleteCars() {
-//        facade.deleteAllCars();
-//        assertEquals(0, facade.getCarsCount(), "Expects 0 rows in the database");
-//    }
+    @Test
+    public void testDeleteCars() {
+        facade.deleteAllCars();
+        assertEquals(0, facade.getCarsCount(), "Expects 0 rows in the database");
+    }
 
 }
