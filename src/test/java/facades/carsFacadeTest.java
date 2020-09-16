@@ -69,11 +69,6 @@ public class carsFacadeTest {
         assertEquals(3, facade.getCarsCount(), "Expects three rows in the database");
     }
 
-    @Test
-    public void testDeleteCars() {
-        facade.deleteAllCars();
-        assertEquals(0, facade.getCarsCount(), "Expects 0 rows in the database");
-    }
 
     @Test
     public void testgetCarsById() {
@@ -84,5 +79,11 @@ public class carsFacadeTest {
     public void testgetCarsByModel() {
         assertEquals("V70", facade.getCarsByModel("V70").get(0).getModel(), "Expects Volvo V70");
     }
+    
+//    @Test
+//    public void testDeleteCars() {
+//        facade.deleteAllCars();
+//        assertEquals(0, facade.getCarsCount(), "Expects 0 rows in the database");
+//    }
 
 }
