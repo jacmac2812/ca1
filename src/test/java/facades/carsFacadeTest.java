@@ -70,10 +70,11 @@ public class carsFacadeTest {
     }
 
 
-//    @Test
-//    public void testgetCarsById() {
-//        assertEquals(1, facade.getCarsById(1).getId(), "Expects 1");
-//    }
+    @Test
+    public void testgetCarsById() {
+        Car car = facade.getCarsById(c.getId());
+        assertEquals(car.getModel(), c.getModel(), "Same car");
+    }
 
     @Test
     public void testgetCarsByModel() {
