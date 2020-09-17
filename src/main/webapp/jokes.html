@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Cook jokes)</h1>
+        <h1>Cool jokes</h1>
         <form>
             Joke ID: <input type="number" id="singleJokeNumberInput">
             <button id="singleJokeNumberInputBtn">Fetch</button>
@@ -30,6 +30,92 @@
         <p id="randomJoke"></p>
         
         <script>
+            function fetchSingleJoke(id) {
+                let url = 'https://jssimsen.com/ca1/api/jokes/' + id;
+                fetch(url)
+                        .then(res => res.json())
+                        .then (data => {
+                            let singleJoke = document.getElementById("singleJoke");
+                            singleJoke.innerHTML = renderObjectToHTML(data);
+                });
+            }
+            
+            function fetchAllJokes() {
+                let url = 'https://jssimsen.com/ca1/api/jokes/all';
+                let allJokes = document.getElementById("allJokes");
+                fetch(url)
+                        .then(res => res.json())
+                        .then (data => {
+                            let newArray = data.map(x => `<tr><td>${x.id}</td><td>${x.theJoke}</td></tr>`);
+                            allJokes.innerHTML =
+                                    `<table>
+                                        <thead><th>Id</th><th>Joke</th></thead>
+                                        ${newArray.join("")}
+                                    </table>`
+                });
+            }
+            
+            function fetchAllJokesFromType(type) {
+                let url = 'https://jssimsen.com/ca1/api/jokes/type' + type;
+                let allJokesFromType = document.getElementById("allJokesFromType");
+                fetch(url)
+                        .then(res => res.json())
+                        .then (data => {
+                            let newArray = data.map(x => `<tr><td>${x.id}</td><td>${x.theJoke}</td></tr>`);
+                            allJokesFromType.innerHTML =
+                                    `<table>
+                                        <thead><th>Id</th><th>Joke</th></thead>
+                                        ${newArray.join("")}
+                                    </table>`
+                });
+            }
+            
+            //Virker ikke endnu
+            function fetchRandomJoke() {
+                let url = 'https://jssimsen.com/ca1/api/jokes/random';
+                fetch(url)
+                        .then(res => res.json())
+                        .then (data => {
+                            let randomJoke = document.getElementById("randomJoke");
+                            //randomJoke.innerHTML = renderObjectToHTML(data);
+                            randomJoke.innerHTML = "Virker ikke endnu";
+                });
+            }
+            
+            function renderObjectToHTML(jokeObj) {
+                result = `Id: ${jokeObj.id}<br>
+                Joke: ${jokeObj.theJoke}<br>
+                Reference: ${jokeObj.reference}<br>
+                Type: ${jokeObj.type}<br>`
+                return result;
+            }
+            
+            let singleJokeNumberInputBtn = document.getElementById("singleJokeNumberInputBtn");
+            singleJokeNumberInputBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                let singleJokeNumberInput = document.getElementById("singleJokeNumberInput");
+                fetchSingleJoke(singleJokeNumberInput.value);
+            });
+            
+            let getAllJokesBtn = document.getElementById("getAllJokesBtn");
+            getAllJokesBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                fetchAllJokes();
+            });
+            
+            let allJokesFromTypeInputBtn = document.getElementById("allJokesFromTypeInputBtn");
+            allJokesFromTypeInputBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                let allJokesFromTypeInput = document.getElementById("allJokesFromTypeInput");
+                fetchAllJokesFromType(allJokesFromTypeInput.value);
+            })
+            
+            let randomJokeBtn = document.getElementById("randomJokeBtn");
+            randomJokeBtn.addEventListener('click', (event) => {
+                event.preventDefault()
+                fetchRandomJoke();
+            })
+            
             
         </script>
     </body>
