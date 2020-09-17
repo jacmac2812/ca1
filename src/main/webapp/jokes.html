@@ -56,7 +56,7 @@
             }
             
             function fetchAllJokesFromType(type) {
-                let url = 'https://jssimsen.com/ca1/api/jokes/type' + type;
+                let url = 'https://jssimsen.com/ca1/api/jokes/type/' + type;
                 let allJokesFromType = document.getElementById("allJokesFromType");
                 fetch(url)
                         .then(res => res.json())
