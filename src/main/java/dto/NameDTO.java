@@ -14,11 +14,12 @@ import entities.Name;
 public class NameDTO {
     
     private int id;
-    private String name;
+    private String name; 
 
     public NameDTO(Name name) {
         this.id = name.getId();
         this.name = name.getName();
+        
     }    
 
     public int getId() {
