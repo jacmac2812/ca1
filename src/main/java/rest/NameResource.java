@@ -58,12 +58,12 @@ public class NameResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllNames() {
         List<Name> names = FACADE.getAllNames();
-        List<NameDTO> nameDTOs = new ArrayList();
-        for (Name name : names) {
-            NameDTO nameDTO = new NameDTO(name);
-            nameDTOs.add(nameDTO);
-        }
-        return GSON.toJson(nameDTOs);
+//        List<NameDTO> nameDTOs = new ArrayList();
+//        for (Name name : names) {
+//            NameDTO nameDTO = new NameDTO(name);
+//            nameDTOs.add(nameDTO);
+//        }
+        return GSON.toJson(names);
     }
 
     //får fejl på denne
