@@ -11,6 +11,7 @@
         <h4>Gruppemedemmer (hentet fra et REST API)</h4>
        
         <p id="allNames"></p>
+    <body onload="fetchAllNames()">
         
         <form>
             <button id="getAllNamesBtn">Alle navne</button><br>
@@ -32,6 +33,13 @@
                                     </table>`
                 });
             
+            function renderObjectToHTML(nameObj) {
+                result = `Id: ${nameObj.id}<br>
+                Name: ${nameObj.name}<br>
+                StudentId: ${nameObj.studentId}<br>
+                FavoritSerie: ${nameObj.favoritSerie}<br>`
+                return result;
+            }; 
             
             let getAllNamesBtn = document.getElementById("getAllNamesBtn");
             getAllNamesBtn.addEventListener('click', (event) => {
