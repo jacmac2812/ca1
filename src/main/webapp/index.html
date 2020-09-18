@@ -25,7 +25,7 @@
                         .then(res => res.json())
                         .then (data => {
                             let newArray = data.map(x => `<tr><td>${x.id}</td><td>${x.name}</td><td>${x.studentId}</td><td>${x.favoritSerie}</td></tr>`);
-                            allJokes.innerHTML =
+                            allNames.innerHTML =
                                     `<table>
                                         <thead><th>Id</th><th>Name</th><th>StudentId</th><th>FavoritSerie</th></thead>
                                         ${newArray.join("")}
@@ -52,7 +52,7 @@
         <h4>Links:</h4>
         <ul>
   <li><a href="https://jssimsen.com/ca1/groupcontract.html">Hvem gjorde hvad og gruppe kontrakt</a></li>
-  <li><a href="https://jssimsen.com/ca1/jokes.html">cool jokes</a></li>
+  <li><a href="https://jssimsen.com/ca1/jokes.html">Cool jokes</a></li>
   <li><a href="https://github.com/jacmac2812/ca1">Github Repo</a></li>
   <li><a href="https://jssimsen.com/ca1/cars.html">Biler til salg</a></li>
 </ul>  

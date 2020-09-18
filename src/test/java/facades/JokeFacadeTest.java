@@ -17,7 +17,7 @@ import utils.EMF_Creator;
  * @author ChristianMadsen
  */
 public class JokeFacadeTest {
-    
+
     private static EntityManagerFactory emf;
     private static JokeFacade facade;
     Joke j1;
@@ -76,7 +76,7 @@ public class JokeFacadeTest {
     }
 
     @Test
-    public void testGetMovies() {
+    public void testGetJokes() {
         assertEquals(2, facade.getAllJokes().size(), "Expects two movies in the database");
     }
 
@@ -85,13 +85,21 @@ public class JokeFacadeTest {
         List<Joke> jokes = facade.getJokesByType(j1.getType());
         assertEquals(j1.getId(), jokes.get(0).getId(), "Expects the same id");
     }
-    
-    
+
     @Test
-    public void testGetMovieById() {
+    public void testGetJokeById() {
         Joke joke = facade.getJokeById(j2.getId());
         assertEquals(j2.getTheJoke(), joke.getTheJoke(), "Expects the same joke");
     }
 
-    
+    @Test
+    public void testGetRandomJoke() {
+        Joke joke = facade.getRandomJoke();
+        if (j1.getId().intValue() == joke.getId().intValue()) {
+            assertEquals(j1.getTheJoke(), joke.getTheJoke(), "Expects the same joke, if this joke is selected");
+        } else if (j2.getId().intValue() == joke.getId().intValue()) {
+            assertEquals(j2.getTheJoke(), joke.getTheJoke(), "Expects the same joke, if this joke is selected");
+        }
+    }
+
 }

@@ -58,7 +58,6 @@ public class JokeResource {
         return GSON.toJson(jokeDTOs);
     }
 
-    
     @Path("type/{type}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -76,13 +75,24 @@ public class JokeResource {
         }
     }
 
-    
     @Path("{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getJokeById(@PathParam("id") int id) {
         try {
             Joke joke = FACADE.getJokeById(id);
+            return GSON.toJson(joke);
+        } catch (NoResultException | NullPointerException e) {
+            return GSON.toJson(null);
+        }
+    }
+
+    @Path("random")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getRandomJoke() {
+        try {
+            Joke joke = FACADE.getRandomJoke();
             return GSON.toJson(joke);
         } catch (NoResultException | NullPointerException e) {
             return GSON.toJson(null);

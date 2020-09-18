@@ -16,6 +16,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -141,6 +142,17 @@ public class JokeResourceTest {
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("type", equalTo(j2.getType()));
+    }
+    
+    @Test
+    public void testGetRandom() throws Exception {
+        given()
+                .contentType("application/json")
+                .get("/jokes/random").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())                
+                .body("id", anyOf(equalTo(j1.getId()), equalTo(j2.getId())));
+                
     }
 
 }
