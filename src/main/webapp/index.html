@@ -32,13 +32,6 @@
                                     </table>`
                 });
             
-            function renderObjectToHTML(nameObj) {
-                result = `Id: ${nameObj.id}<br>
-                Name: ${nameObj.name}<br>
-                StudentId: ${nameObj.studentId}<br>
-                FavoritSerie: ${nameObj.favoritSerie}<br>`
-                return result;
-            }; 
             
             let getAllNamesBtn = document.getElementById("getAllNamesBtn");
             getAllNamesBtn.addEventListener('click', (event) => {
