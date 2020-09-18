@@ -3,6 +3,11 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <style>
+            table, th, td {
+                border: 1px solid black
+            }
+        </style>
     </head>
     <body onload="fetchAllNames()">
         <h1>Gruppe 2929</h1>
@@ -52,7 +57,7 @@
             getAllNamesBtn.addEventListener('click', (event) => {
                 event.preventDefault();
                 fetchAllNames();
-                changeColors();
+                setTimeout(changeColors(), 200)
             });
         
             
