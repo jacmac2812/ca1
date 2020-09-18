@@ -41,18 +41,18 @@ public class NameFacade {
     }
 
     //får fejl på denne
-//    public Name createName(String name, String studentId, String favoritSerie) {
-//        EntityManager em = emf.createEntityManager();
-//        Name name = new Name(name, studentId, favoritSerie);
-//        try {
-//            em.getTransaction().begin();
-//            em.persist(name);
-//            em.getTransaction().commit();
-//            return name;
-//        } finally {
-//            em.close();
-//        }
-//    }
+    public Name createName(String name1, String studentId, String favoritSerie) {
+        EntityManager em = emf.createEntityManager();
+        Name name = new Name(name1, studentId, favoritSerie);
+        try {
+            em.getTransaction().begin();
+            em.persist(name);
+            em.getTransaction().commit();
+            return name;
+        } finally {
+            em.close();
+        }
+    }
 
     public List<Name> getAllNames() {
         EntityManager em = emf.createEntityManager();
@@ -74,20 +74,7 @@ public class NameFacade {
             em.close();
         }
     }
-    
-    //skal ummelbart ikke bruges
-
-//    public List<Joke> getJokesByType(String type) {
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//            TypedQuery<Joke> query =
-//                    em.createQuery("SELECT j FROM Joke j WHERE j.type = :type", Joke.class);
-//            query.setParameter("type", type);
-//            return query.getResultList();
-//        } finally {
-//            em.close();
-//        }
-//    }
+   
     //TODO Remove/Change this before use
     public long getNameCount() {
         EntityManager em = emf.createEntityManager();
