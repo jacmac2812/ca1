@@ -4,14 +4,13 @@
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body>
+    <body onload="fetchAllNames()">
         <h1>Gruppe 2929</h1>
         
         <h4>Klasse D</h4>
         <h4>Gruppemedemmer (hentet fra et REST API)</h4>
        
         <p id="allNames"></p>
-    <body onload="fetchAllNames()">
         
         <form>
             <button id="getAllNamesBtn">Alle navne</button><br>
@@ -25,7 +24,7 @@
                 fetch(url)
                         .then(res => res.json())
                         .then (data => {
-                            let newArray = data.map(x => `<tr><td>${x.id}</td><td>${x.name}</td><td>${x.studentId}</td><td>${x.favoritSerie}</td></tr>`);
+                            let newArray = data.map(x => `<tr id="${x.id}"><td>${x.id}</td><td>${x.name}</td><td>${x.studentId}</td><td>${x.favoritSerie}</td></tr>`);
                             allNames.innerHTML =
                                     `<table>
                                         <thead><th>Id</th><th>Name</th><th>StudentId</th><th>FavoritSerie</th></thead>
@@ -33,18 +32,27 @@
                                     </table>`
                 });
             }
+            
             function renderObjectToHTML(nameObj) {
                 result = `Id: ${nameObj.id}<br>
                 Name: ${nameObj.name}<br>
                 StudentId: ${nameObj.studentId}<br>
                 FavoritSerie: ${nameObj.favoritSerie}<br>`
                 return result;
-            }; 
+            };
+            
+            function changeColors() {
+                document.getElementById("1").style.backgroundColor = "blue";
+                document.getElementById("2").style.backgroundColor = "green";
+                document.getElementById("3").style.backgroundColor = "yellow";
+                document.getElementById("4").style.backgroundColor = "red";
+            }
             
             let getAllNamesBtn = document.getElementById("getAllNamesBtn");
             getAllNamesBtn.addEventListener('click', (event) => {
                 event.preventDefault();
                 fetchAllNames();
+                changeColors();
             });
         
             
