@@ -9,6 +9,45 @@
         
         <h4>Klasse D</h4>
         <h4>Gruppemedemmer (hentet fra et REST API)</h4>
+       
+        <p id="allNames"></p>
+        
+        <form>
+            <button id="getAllNamesBtn">Alle navne</button><br>
+        </form>
+
+        <script>
+            
+            function fetchAllNames() {
+                let url = 'https://jssimsen.com/ca1/api/names/all';
+                let allNames = document.getElementById("allNames");
+                fetch(url)
+                        .then(res => res.json())
+                        .then (data => {
+                            let newArray = data.map(x => `<tr><td>${x.id}</td><td>${x.name}</td><td>${x.studentId}</td><td>${x.favoritSerie}</td></tr>`);
+                            allJokes.innerHTML =
+                                    `<table>
+                                        <thead><th>Id</th><th>Joke</th></thead>
+                                        ${newArray.join("")}
+                                    </table>`
+                });
+            
+            function renderObjectToHTML(nameObj) {
+                result = `Id: ${nameObj.id}<br>
+                Name: ${nameObj.name}<br>
+                StudentId: ${jokeObj.studentId}<br>
+                FavoritSerie: ${jokeObj.favoritSerie}<br>`
+                return result;
+            }; 
+            
+            let getAllNamesBtn = document.getElementById("getAllNamesBtn");
+            getAllNamesBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                fetchAllNames();
+            });
+        }
+            
+        </script>
         
         <h4>Links:</h4>
         <ul>
