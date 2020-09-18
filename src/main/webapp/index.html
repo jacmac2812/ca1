@@ -18,7 +18,7 @@
         <p id="allNames"></p>
         
         <form>
-            <button id="getAllNamesBtn">Alle navne</button><br>
+            <button id="getAllNamesBtn">Hent navne</button><br>
         </form>
 
         <script>
@@ -56,8 +56,9 @@
             let getAllNamesBtn = document.getElementById("getAllNamesBtn");
             getAllNamesBtn.addEventListener('click', (event) => {
                 event.preventDefault();
-                fetchAllNames();
-                setTimeout(changeColors(), 2000)
+                //fetchAllNames();
+                //setTimeout(changeColors(), 2000)
+                changeColors()
             });
         
             
