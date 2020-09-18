@@ -50,7 +50,7 @@ public class CarResource {
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllMovies() {
+    public String getAllCars() {
         List<Car> allCars = FACADE.getAllCars();
         return GSON.toJson(allCars);
     }
@@ -58,7 +58,7 @@ public class CarResource {
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMovieById(@PathParam("id") int id) {
+    public String getCarById(@PathParam("id") int id) {
         Car car = FACADE.getCarsById(id);
         return GSON.toJson(car);
     }
@@ -66,7 +66,7 @@ public class CarResource {
     @GET
     @Path("/model/{model}")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMovieByName(@PathParam("model") String model) {
+    public String getCarByName(@PathParam("model") String model) {
         List<Car> CarList = FACADE.getCarsByModel(model);
         return GSON.toJson(CarList);
     }
