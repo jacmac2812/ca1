@@ -45,6 +45,7 @@ table, th, td {
 
 
     <script>
+ //       CAR ARRAY FOR LOCAL TESTING
  //       var cars = [
  //           {id: 1, year: 1997, maker: 'Ford', model: 'E350', owner: 'Jacob', price: 39000},
  //           {id: 2, year: 1999, maker: 'Chevy', model: 'Venture', owner: 'Christian', price: 45500},
@@ -82,17 +83,51 @@ table, th, td {
                         console.log(data);
                     });
         };
-
+        
+         function fetchAllCars() {
+            let url = 'https://jssimsen.com/ca1/api/cars/all';
+            fetch(url)
+                    .then(res => res.json()) //in flow1, just do it
+                    .then(data => {
 
         let number2 = document.getElementById("number2");
         number2.addEventListener('click', (event) => {
             event.preventDefault();
             let number2 = document.getElementById("yearNumber").value;
-            let carsFiltered = cars.filter(function (car) {
+            let carsFiltered = data.filter(function (car) {
                 return car.year < number2;
+            });
+            
+                listHTML(carsFiltered);
+            
+             });
+            
+        });
+         };
+        
+        
+        function fetchAllCars() {
+            let url = 'https://jssimsen.com/ca1/api/cars/all';
+            fetch(url)
+                    .then(res => res.json()) //in flow1, just do it
+                    .then(data => {
+           
+             let model = document.getElementById("model");
+        model.addEventListener('click', (event) => {
+            event.preventDefault();
+            let model = document.getElementById("model2").value;
+            let carsFiltered = cars.filter(function (car) {
+                return car.model === model;
             });
             listHTML(carsFiltered);
         });
+            
+            
+            
+           });
+        };
+        
+        
         let maker = document.getElementById("maker");
         maker.addEventListener('click', (event) => {
             event.preventDefault();
@@ -102,6 +137,11 @@ table, th, td {
             });
             listHTML(carsFiltered);
         });
+        
+        
+        
+        
+        
         let model = document.getElementById("model");
         model.addEventListener('click', (event) => {
             event.preventDefault();
