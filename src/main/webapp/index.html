@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Welcome!</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <style>
+        <style>
             table, th, td {
                 border: 1px solid black
             }
@@ -11,66 +11,67 @@
     </head>
     <body onload="fetchAllNames()">
         <h1>Gruppe 2929</h1>
-        
+
         <h4>Klasse D</h4>
         <h4>Gruppemedemmer (hentet fra et REST API)</h4>
-       
+
         <p id="allNames"></p>
-        
+
         <form>
             <button id="getAllNamesBtn">Hent navne</button><br>
         </form>
 
         <script>
-            
+
             function fetchAllNames() {
                 let url = 'https://jssimsen.com/ca1/api/names/all';
                 let allNames = document.getElementById("allNames");
                 fetch(url)
                         .then(res => res.json())
-                        .then (data => {
+                        .then(data => {
                             let newArray = data.map(x => `<tr id="${x.id}"><td>${x.id}</td><td>${x.name}</td><td>${x.studentId}</td><td>${x.favoritSerie}</td></tr>`);
                             allNames.innerHTML =
                                     `<table>
                                         <thead><th>Id</th><th>Name</th><th>StudentId</th><th>FavoritSerie</th></thead>
                                         ${newArray.join("")}
                                     </table>`
-                });
+                        });
             }
-            
+
             function renderObjectToHTML(nameObj) {
                 result = `Id: ${nameObj.id}<br>
                 Name: ${nameObj.name}<br>
                 StudentId: ${nameObj.studentId}<br>
                 FavoritSerie: ${nameObj.favoritSerie}<br>`
                 return result;
-            };
-            
-           function changeColors() {
-         //      await fetchAllNames();
+            }
+            ;
+
+            async function changeColors() {
+                await fetchAllNames();
                 document.getElementById("1").style.backgroundColor = "blue";
                 document.getElementById("2").style.backgroundColor = "green";
                 document.getElementById("3").style.backgroundColor = "yellow";
                 document.getElementById("4").style.backgroundColor = "red";
             }
-            
+
             let getAllNamesBtn = document.getElementById("getAllNamesBtn");
             getAllNamesBtn.addEventListener('click', (event) => {
                 event.preventDefault();
                 //fetchAllNames();
                 changeColors();
-               
+
             });
-        
-            
+
+
         </script>
-        
+
         <h4>Links:</h4>
         <ul>
-  <li><a href="https://jssimsen.com/ca1/groupcontract.html">Hvem gjorde hvad og gruppe kontrakt</a></li>
-  <li><a href="https://jssimsen.com/ca1/jokes.html">Cool jokes</a></li>
-  <li><a href="https://github.com/jacmac2812/ca1">Github Repo</a></li>
-  <li><a href="https://jssimsen.com/ca1/cars.html">Biler til salg</a></li>
-</ul>  
+            <li><a href="https://jssimsen.com/ca1/groupcontract.html">Hvem gjorde hvad og gruppe kontrakt</a></li>
+            <li><a href="https://jssimsen.com/ca1/jokes.html">Cool jokes</a></li>
+            <li><a href="https://github.com/jacmac2812/ca1">Github Repo</a></li>
+            <li><a href="https://jssimsen.com/ca1/cars.html">Biler til salg</a></li>
+        </ul>  
     </body>
 </html>
