@@ -85,28 +85,40 @@
             }
             ;
 
+
+
+            let number2 = document.getElementById("number2");
+            number2.addEventListener('click', (event) => {
+                event.preventDefault();
+            });
+
+
             function fetchAllCars2() {
                 let url = 'https://jssimsen.com/ca1/api/cars/all';
                 fetch(url)
                         .then(res => res.json()) //in flow1, just do it
                         .then(data => {
 
-                            let number2 = document.getElementById("number2");
-                            number2.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let number2 = document.getElementById("yearNumber").value;
-                                let carsFiltered = data.filter(function (car) {
-                                    return car.year < number2;
-                                });
 
-                                listHTML(carsFiltered);
-
+                            let number2 = document.getElementById("yearNumber").value;
+                            let carsFiltered = data.filter(function (car) {
+                                return car.year < number2;
                             });
 
+                            listHTML(carsFiltered);
+
                         });
+
+
             }
             ;
 
+
+            let model = document.getElementById("model");
+            model.addEventListener('click', (event) => {
+                event.preventDefault();
+
+            });
 
             function fetchAllCars3() {
                 let url = 'https://jssimsen.com/ca1/api/cars/all';
@@ -114,22 +126,26 @@
                         .then(res => res.json()) //in flow1, just do it
                         .then(data => {
 
-                            let model = document.getElementById("model");
-                            model.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let model = document.getElementById("model2").value;
-                                let carsFiltered = data.filter(function (car) {
-                                    return car.model === model;
-                                });
-                                listHTML(carsFiltered);
+
+                            let model = document.getElementById("model2").value;
+                            let carsFiltered = data.filter(function (car) {
+                                return car.model === model;
                             });
-
-
-
+                            listHTML(carsFiltered);
                         });
+
+
+
+
             }
             ;
 
+
+            let make = document.getElementById("make");
+            make.addEventListener('click', (event) => {
+                event.preventDefault();
+
+            });
 
             function fetchAllCars4() {
                 let url = 'https://jssimsen.com/ca1/api/cars/all';
@@ -138,20 +154,24 @@
                         .then(data => {
 
 
-                            let make = document.getElementById("make");
-                            make.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let make = document.getElementById("maker2").value;
-                                let carsFiltered = data.filter(function (car) {
-                                    return car.make === make;
-                                });
-                                listHTML(carsFiltered);
+
+                            let make = document.getElementById("maker2").value;
+                            let carsFiltered = data.filter(function (car) {
+                                return car.make === make;
                             });
-
-
+                            listHTML(carsFiltered);
                         });
+
+
+
             }
             ;
+
+
+            let owner = document.getElementById("owner");
+            owner.addEventListener('click', (event) => {
+                event.preventDefault();
+            });
 
 
             function fetchAllCars5() {
@@ -160,19 +180,27 @@
                         .then(res => res.json()) //in flow1, just do it
                         .then(data => {
 
-                            let owner = document.getElementById("owner");
-                            owner.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let owner = document.getElementById("owner2").value;
-                                let carsFiltered = data.filter(function (car) {
-                                    return car.owner === owner;
-                                });
-                                listHTML(carsFiltered);
-                            });
 
+                            let owner = document.getElementById("owner2").value;
+                            let carsFiltered = data.filter(function (car) {
+                                return car.owner === owner;
+                            });
+                            listHTML(carsFiltered);
                         });
+
+
             }
             ;
+
+
+
+            let number = document.getElementById("number");
+            number.addEventListener('click', (event) => {
+                event.preventDefault();
+
+            });
+
+
 
             function fetchAllCars6() {
                 let url = 'https://jssimsen.com/ca1/api/cars/all';
@@ -180,17 +208,15 @@
                         .then(res => res.json()) //in flow1, just do it
                         .then(data => {
 
-                            let number = document.getElementById("number");
-                            number.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let number = document.getElementById("typeNumber").value;
-                                let carsFiltered = data.filter(function (car) {
-                                    return car.price < number;
-                                });
-                                listHTML(carsFiltered);
-                            });
 
+                            let number = document.getElementById("typeNumber").value;
+                            let carsFiltered = data.filter(function (car) {
+                                return car.price < number;
+                            });
+                            listHTML(carsFiltered);
                         });
+
+
             }
             ;
 
@@ -207,16 +233,20 @@
                                 if (a.year !== b.year)
                                     return a.year - b.year;
                             });
-                             listHTML(data);
-                             console.log(data);
+                            listHTML(data);
+                            console.log(data);
 
                         });
             }
             ;
 
-           
+
+            let sortYear = document.getElementById("sortYear");
+            sortYear.addEventListener('click', (event) => {
+                event.preventDefault();
 
 
+            });
 
             function fetchAllCars8() {
                 let url = 'https://jssimsen.com/ca1/api/cars/all';
@@ -224,19 +254,17 @@
                         .then(res => res.json()) //in flow1, just do it
                         .then(data => {
 
-                            let sortYear = document.getElementById("sortYear");
-                            sortYear.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let sortYear = document.getElementById("sortYear").value;
-                                let carsFiltered = data.sort((a, b) => {
-                                    if (a.year !== b.year)
-                                        return a.year - b.year;
-                                });
-                                listHTML(carsFiltered);
+
+                            let sortYear = document.getElementById("sortYear").value;
+                            let carsFiltered = data.sort((a, b) => {
+                                if (a.year !== b.year)
+                                    return a.year - b.year;
                             });
-
-
+                            listHTML(carsFiltered);
                         });
+
+
+
             }
             ;
 
@@ -259,9 +287,12 @@
             }
             ;
 
+            let sortPrice = document.getElementById("sortPrice");
+            sortPrice.addEventListener('click', (event) => {
+                event.preventDefault();
 
+            });
 
-            
 
             function fetchAllCars10() {
                 let url = 'https://jssimsen.com/ca1/api/cars/all';
@@ -270,18 +301,16 @@
                         .then(data => {
 
 
-                            let sortPrice = document.getElementById("sortPrice");
-                            sortPrice.addEventListener('click', (event) => {
-                                event.preventDefault();
-                                let sortPrice = document.getElementById("sortPrice").value;
-                                let carsFiltered = data.sort((a, b) => {
-                                    if (a.price !== b.price)
-                                        return a.price - b.price;
-                                });
-                                listHTML(carsFiltered);
-                            });
 
+                            let sortPrice = document.getElementById("sortPrice").value;
+                            let carsFiltered = data.sort((a, b) => {
+                                if (a.price !== b.price)
+                                    return a.price - b.price;
+                            });
+                            listHTML(carsFiltered);
                         });
+
+
             }
             ;
 
