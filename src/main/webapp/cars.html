@@ -10,8 +10,8 @@ table, th, td {
             }
         </style>
     </head>
-    <body>
-    <!-- <body onload="myFunction()">  -->
+    
+    <body onload="fetchAllCars()"> 
         
         
     <p id='carList'></p>
@@ -45,18 +45,18 @@ table, th, td {
 
 
     <script>
-        var cars = [
-            {id: 1, year: 1997, maker: 'Ford', model: 'E350', owner: 'Jacob', price: 39000},
-            {id: 2, year: 1999, maker: 'Chevy', model: 'Venture', owner: 'Christian', price: 45500},
-            {id: 3, year: 2000, maker: 'Chevy', model: 'Camaro', owner: 'Frederik', price: 50000},
-            {id: 4, year: 1996, maker: 'Jeep', model: 'Grand Cherokee', owner: 'Jacob', price: 47990},
-            {id: 5, year: 2005, maker: 'Volvo', model: 'V70', owner: 'Jonas', price: 44790},
-            {id: 6, year: 1998, maker: 'Porsche', model: '911', owner: 'Jonas', price: 99999},
-            {id: 7, year: 2003, maker: 'Porsche', model: 'GT1', owner: 'Frederik', price: 100995},
-            {id: 8, year: 2010, maker: 'Jaguar', model: 'E-pace', owner: 'Christian', price: 69420},
-            {id: 9, year: 1990, maker: 'Ferrari', model: '488 Pista', owner: 'Jonas', price: 133769},
-            {id: 10, year: 2007, maker: 'Mercedes', model: 'GLA SUV', owner: 'Jacob', price: 75900}
-        ];
+ //       var cars = [
+ //           {id: 1, year: 1997, maker: 'Ford', model: 'E350', owner: 'Jacob', price: 39000},
+ //           {id: 2, year: 1999, maker: 'Chevy', model: 'Venture', owner: 'Christian', price: 45500},
+ //           {id: 3, year: 2000, maker: 'Chevy', model: 'Camaro', owner: 'Frederik', price: 50000},
+ //           {id: 4, year: 1996, maker: 'Jeep', model: 'Grand Cherokee', owner: 'Jacob', price: 47990},
+ //           {id: 5, year: 2005, maker: 'Volvo', model: 'V70', owner: 'Jonas', price: 44790},
+ //           {id: 6, year: 1998, maker: 'Porsche', model: '911', owner: 'Jonas', price: 99999},
+ //           {id: 7, year: 2003, maker: 'Porsche', model: 'GT1', owner: 'Frederik', price: 100995},
+ //           {id: 8, year: 2010, maker: 'Jaguar', model: 'E-pace', owner: 'Christian', price: 69420},
+ //           {id: 9, year: 1990, maker: 'Ferrari', model: '488 Pista', owner: 'Jonas', price: 133769},
+ //           {id: 10, year: 2007, maker: 'Mercedes', model: 'GLA SUV', owner: 'Jacob', price: 75900}
+ //       ];
 
         function listHTML(array) {
             array2 = array.map(function (car) {
@@ -70,19 +70,18 @@ table, th, td {
             document.getElementById("carList").innerHTML = array3;
         }
 
-        listHTML(cars);
+    //    listHTML(cars);
 
 
-  //      function fetchAllCars() {
-  //          let url = 'https://jssimsen.com/ca1/api/cars/all';
-  //          fetch(url)
-  //                  .then(res => res.json()) //in flow1, just do it
-  //                  .then(data => {
-  //                      //listHTML(data);
-  //                      console.log(data);
-  //                  });
-  //      }
-  //      ;
+        function fetchAllCars() {
+            let url = 'https://jssimsen.com/ca1/api/cars/all';
+            fetch(url)
+                    .then(res => res.json()) //in flow1, just do it
+                    .then(data => {
+                        //listHTML(data);
+                        console.log(data);
+                    });
+        };
 
 
         let number2 = document.getElementById("number2");
