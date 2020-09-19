@@ -20,7 +20,7 @@
             <input type="submit" id="number2" value="Year less than">
             <br>
             <input type="text" id="maker2" name="Maker">
-            <input type="submit" id="maker" value="Maker">
+            <input type="submit" id="make" value="Maker">
             <br>
             <input type="text" id="model2" name="Model">
             <input type="submit" id="model" value="Model">
@@ -61,7 +61,7 @@
 
             function listHTML(array) {
                 array2 = array.map(function (car) {
-                    return '<tr><td>' + car.id + '</td><td>' + car.year + '</td><td>' + car.maker + '</td><td>' + car.model + '</td><td>' + car.owner + '</td><td>' + car.price + '</td></tr>';
+                    return '<tr><td>' + car.id + '</td><td>' + car.year + '</td><td>' + car.make + '</td><td>' + car.model + '</td><td>' + car.owner + '</td><td>' + car.price + '</td></tr>';
                 });
 
                 array2.push('</table>');
@@ -138,12 +138,12 @@
                         .then(data => {
 
 
-                            let maker = document.getElementById("maker");
-                            maker.addEventListener('click', (event) => {
+                            let make = document.getElementById("make");
+                            make.addEventListener('click', (event) => {
                                 event.preventDefault();
-                                let maker = document.getElementById("maker2").value;
+                                let make = document.getElementById("maker2").value;
                                 let carsFiltered = data.filter(function (car) {
-                                    return car.maker === maker;
+                                    return car.make === make;
                                 });
                                 listHTML(carsFiltered);
                             });
