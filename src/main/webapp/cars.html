@@ -5,204 +5,287 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-table, th, td {
+            table, th, td {
                 border: 1px solid black
             }
         </style>
     </head>
-    
+
     <body onload="fetchAllCars()"> 
-        
-        
-    <p id='carList'></p>
-    <form id='priceFilter'>
-        <input type="number" id="yearNumber" name="typeNumber">
-        <input type="submit" id="number2" value="Year less than">
-        <br>
-        <input type="text" id="maker2" name="Maker">
-        <input type="submit" id="maker" value="Maker">
-        <br>
-        <input type="text" id="model2" name="Model">
-        <input type="submit" id="model" value="Model">
-        <br>
-        <input type="text" id="owner2" name="Owner">
-        <input type="submit" id="owner" value="Owner">
-        <br>
-        <input type="number" id="typeNumber" name="typeNumber">
-        <input type="submit" id="number" value="Price less than">
-        <br>
-        <input type="submit" id="sortYear" value="Sort Year">
-        <br>
-        <input type="submit" id="sortPrice" value="Sort Price">
+
+
+        <p id='carList'></p>
+        <form id='priceFilter'>
+            <input type="number" id="yearNumber" name="typeNumber">
+            <input type="submit" id="number2" value="Year less than">
+            <br>
+            <input type="text" id="maker2" name="Maker">
+            <input type="submit" id="maker" value="Maker">
+            <br>
+            <input type="text" id="model2" name="Model">
+            <input type="submit" id="model" value="Model">
+            <br>
+            <input type="text" id="owner2" name="Owner">
+            <input type="submit" id="owner" value="Owner">
+            <br>
+            <input type="number" id="typeNumber" name="typeNumber">
+            <input type="submit" id="number" value="Price less than">
+            <br>
+            <input type="submit" id="sortYear" value="Sort Year">
+            <br>
+            <input type="submit" id="sortPrice" value="Sort Price">
 
 
 
 
-    </form>
-    
-    
-    <h4><a href="https://jssimsen.com/ca1/">Gå tilbage til forsiden</a></h4>
+        </form>
 
 
-    <script>
- //       CAR ARRAY FOR LOCAL TESTING
- //       var cars = [
- //           {id: 1, year: 1997, maker: 'Ford', model: 'E350', owner: 'Jacob', price: 39000},
- //           {id: 2, year: 1999, maker: 'Chevy', model: 'Venture', owner: 'Christian', price: 45500},
- //           {id: 3, year: 2000, maker: 'Chevy', model: 'Camaro', owner: 'Frederik', price: 50000},
- //           {id: 4, year: 1996, maker: 'Jeep', model: 'Grand Cherokee', owner: 'Jacob', price: 47990},
- //           {id: 5, year: 2005, maker: 'Volvo', model: 'V70', owner: 'Jonas', price: 44790},
- //           {id: 6, year: 1998, maker: 'Porsche', model: '911', owner: 'Jonas', price: 99999},
- //           {id: 7, year: 2003, maker: 'Porsche', model: 'GT1', owner: 'Frederik', price: 100995},
- //           {id: 8, year: 2010, maker: 'Jaguar', model: 'E-pace', owner: 'Christian', price: 69420},
- //           {id: 9, year: 1990, maker: 'Ferrari', model: '488 Pista', owner: 'Jonas', price: 133769},
- //           {id: 10, year: 2007, maker: 'Mercedes', model: 'GLA SUV', owner: 'Jacob', price: 75900}
- //       ];
-
-        function listHTML(array) {
-            array2 = array.map(function (car) {
-                return '<tr><td>' + car.id + '</td><td>' + car.year + '</td><td>' + car.maker + '</td><td>' + car.model + '</td><td>' + car.owner + '</td><td>' + car.price + '</td></tr>';
-            });
-
-            array2.push('</table>');
-            array2.unshift('<table><tr><th>Id</th><th>Year</th><th>Maker</th><th>Model</th><th>Owner</th><th>Price</th></tr>');
-            array3 = array2.join('');
-
-            document.getElementById("carList").innerHTML = array3;
-        }
-
-    //    listHTML(cars);
+        <h4><a href="https://jssimsen.com/ca1/">Gå tilbage til forsiden</a></h4>
 
 
-        function fetchAllCars() {
-            let url = 'https://jssimsen.com/ca1/api/cars/all';
-            fetch(url)
-                    .then(res => res.json()) //in flow1, just do it
-                    .then(data => {
-                        listHTML(data);
-                        console.log(data);
-                    });
-        };
-        
-         function fetchAllCars() {
-            let url = 'https://jssimsen.com/ca1/api/cars/all';
-            fetch(url)
-                    .then(res => res.json()) //in flow1, just do it
-                    .then(data => {
+        <script>
+            //       CAR ARRAY FOR LOCAL TESTING
+            //       var cars = [
+            //           {id: 1, year: 1997, maker: 'Ford', model: 'E350', owner: 'Jacob', price: 39000},
+            //           {id: 2, year: 1999, maker: 'Chevy', model: 'Venture', owner: 'Christian', price: 45500},
+            //           {id: 3, year: 2000, maker: 'Chevy', model: 'Camaro', owner: 'Frederik', price: 50000},
+            //           {id: 4, year: 1996, maker: 'Jeep', model: 'Grand Cherokee', owner: 'Jacob', price: 47990},
+            //           {id: 5, year: 2005, maker: 'Volvo', model: 'V70', owner: 'Jonas', price: 44790},
+            //           {id: 6, year: 1998, maker: 'Porsche', model: '911', owner: 'Jonas', price: 99999},
+            //           {id: 7, year: 2003, maker: 'Porsche', model: 'GT1', owner: 'Frederik', price: 100995},
+            //           {id: 8, year: 2010, maker: 'Jaguar', model: 'E-pace', owner: 'Christian', price: 69420},
+            //           {id: 9, year: 1990, maker: 'Ferrari', model: '488 Pista', owner: 'Jonas', price: 133769},
+            //           {id: 10, year: 2007, maker: 'Mercedes', model: 'GLA SUV', owner: 'Jacob', price: 75900}
+            //       ];
 
-        let number2 = document.getElementById("number2");
-        number2.addEventListener('click', (event) => {
-            event.preventDefault();
-            let number2 = document.getElementById("yearNumber").value;
-            let carsFiltered = data.filter(function (car) {
-                return car.year < number2;
-            });
-            
-                listHTML(carsFiltered);
-            
-             });
-            
-        });
-         };
-        
-        
-        function fetchAllCars() {
-            let url = 'https://jssimsen.com/ca1/api/cars/all';
-            fetch(url)
-                    .then(res => res.json()) //in flow1, just do it
-                    .then(data => {
+            function listHTML(array) {
+                array2 = array.map(function (car) {
+                    return '<tr><td>' + car.id + '</td><td>' + car.year + '</td><td>' + car.maker + '</td><td>' + car.model + '</td><td>' + car.owner + '</td><td>' + car.price + '</td></tr>';
+                });
+
+                array2.push('</table>');
+                array2.unshift('<table><tr><th>Id</th><th>Year</th><th>Maker</th><th>Model</th><th>Owner</th><th>Price</th></tr>');
+                array3 = array2.join('');
+
+                document.getElementById("carList").innerHTML = array3;
+            }
+
+            //    listHTML(cars);
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+                            listHTML(data);
+                            console.log(data);
+                        });
+            }
+            ;
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+                            let number2 = document.getElementById("number2");
+                            number2.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let number2 = document.getElementById("yearNumber").value;
+                                let carsFiltered = data.filter(function (car) {
+                                    return car.year < number2;
+                                });
+
+                                listHTML(carsFiltered);
+
+                            });
+
+                        });
+            }
+            ;
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+                            let model = document.getElementById("model");
+                            model.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let model = document.getElementById("model2").value;
+                                let carsFiltered = data.filter(function (car) {
+                                    return car.model === model;
+                                });
+                                listHTML(carsFiltered);
+                            });
+
+
+
+                        });
+            }
+            ;
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+
+                            let maker = document.getElementById("maker");
+                            maker.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let maker = document.getElementById("maker2").value;
+                                let carsFiltered = data.filter(function (car) {
+                                    return car.maker === maker;
+                                });
+                                listHTML(carsFiltered);
+                            });
+
+
+                        });
+            }
+            ;
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+                            let owner = document.getElementById("owner");
+                            owner.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let owner = document.getElementById("owner2").value;
+                                let carsFiltered = data.filter(function (car) {
+                                    return car.owner === owner;
+                                });
+                                listHTML(carsFiltered);
+                            });
+
+                        });
+            }
+            ;
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+                            let number = document.getElementById("number");
+                            number.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let number = document.getElementById("typeNumber").value;
+                                let carsFiltered = data.filter(function (car) {
+                                    return car.price < number;
+                                });
+                                listHTML(carsFiltered);
+                            });
+
+                        });
+            }
+            ;
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+
+
+                            data.sort((a, b) => {
+                                if (a.year !== b.year)
+                                    return a.year - b.year;
+                            });
+                            
+                             console.log(data);
+
+                        });
+            }
+            ;
+
            
-             let model = document.getElementById("model");
-        model.addEventListener('click', (event) => {
-            event.preventDefault();
-            let model = document.getElementById("model2").value;
-            let carsFiltered = cars.filter(function (car) {
-                return car.model === model;
-            });
-            listHTML(carsFiltered);
-        });
+
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+                            let sortYear = document.getElementById("sortYear");
+                            sortYear.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let sortYear = document.getElementById("sortYear").value;
+                                let carsFiltered = data.sort((a, b) => {
+                                    if (a.year !== b.year)
+                                        return a.year - b.year;
+                                });
+                                listHTML(carsFiltered);
+                            });
+
+
+                        });
+            }
+            ;
+
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+
+
+                            data.sort((a, b) => {
+                                if (a.price !== b.price)
+                                    return a.price - b.price;
+                            });
+                            
+                            console.log(data);
+                        });
+            }
+            ;
+
+
+
             
-            
-            
-           });
-        };
-        
-        
-        let maker = document.getElementById("maker");
-        maker.addEventListener('click', (event) => {
-            event.preventDefault();
-            let maker = document.getElementById("maker2").value;
-            let carsFiltered = cars.filter(function (car) {
-                return car.maker === maker;
-            });
-            listHTML(carsFiltered);
-        });
-        
-        
-        
-        
-        
-        let model = document.getElementById("model");
-        model.addEventListener('click', (event) => {
-            event.preventDefault();
-            let model = document.getElementById("model2").value;
-            let carsFiltered = cars.filter(function (car) {
-                return car.model === model;
-            });
-            listHTML(carsFiltered);
-        });
-        let owner = document.getElementById("owner");
-        owner.addEventListener('click', (event) => {
-            event.preventDefault();
-            let owner = document.getElementById("owner2").value;
-            let carsFiltered = cars.filter(function (car) {
-                return car.owner === owner;
-            });
-            listHTML(carsFiltered);
-        });
-        let number = document.getElementById("number");
-        number.addEventListener('click', (event) => {
-            event.preventDefault();
-            let number = document.getElementById("typeNumber").value;
-            let carsFiltered = cars.filter(function (car) {
-                return car.price < number;
-            });
-            listHTML(carsFiltered);
-        });
-        cars.sort((a, b) => {
-            if (a.year !== b.year)
-                return a.year - b.year;
-        });
-        console.log(cars);
-        let sortYear = document.getElementById("sortYear");
-        sortYear.addEventListener('click', (event) => {
-            event.preventDefault();
-            let sortYear = document.getElementById("sortYear").value;
-            let carsFiltered = cars.sort((a, b) => {
-                if (a.year !== b.year)
-                    return a.year - b.year;
-            });
-            listHTML(carsFiltered);
-        });
-        cars.sort((a, b) => {
-            if (a.price !== b.price)
-                return a.price - b.price;
-        });
-        console.log(cars);
-        let sortPrice = document.getElementById("sortPrice");
-        sortPrice.addEventListener('click', (event) => {
-            event.preventDefault();
-            let sortPrice = document.getElementById("sortPrice").value;
-            let carsFiltered = cars.sort((a, b) => {
-                if (a.price !== b.price)
-                    return a.price - b.price;
-            });
-            listHTML(carsFiltered);
-        });
+
+            function fetchAllCars() {
+                let url = 'https://jssimsen.com/ca1/api/cars/all';
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
 
 
+                            let sortPrice = document.getElementById("sortPrice");
+                            sortPrice.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                let sortPrice = document.getElementById("sortPrice").value;
+                                let carsFiltered = data.sort((a, b) => {
+                                    if (a.price !== b.price)
+                                        return a.price - b.price;
+                                });
+                                listHTML(carsFiltered);
+                            });
+
+                        });
+            }
+            ;
 
 
-    </script>
-</body>
+        </script>
+    </body>
 </html>
